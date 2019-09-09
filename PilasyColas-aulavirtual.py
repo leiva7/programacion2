@@ -54,18 +54,20 @@ def intercambiarColas(cola1,cola2):
     for i in range (aTransferirDe1):
         cola2.agregar(cola1.avanzar())
         
-"""
+
 def juegoDeLasSillas(participantes):
     sillas = Cola()
     for i in participantes:
         sillas.agregar(i)
     while sillas.tamanio() > 0:
         parado = sillas.avanzar()
-        for i in range (randint(10)):
+        for i in range (randint(0,10)):
             sillas.agregar(parado)
             parado = sillas.avanzar()
-        
-"""            
+    return parado
+    
+juegoDeLasSillas(["Fran","Pau","Facu","Mati"])
+          
             
         
         
@@ -110,3 +112,23 @@ print ("como queda la cola1 después de intercambiar:")
 Cola1.imprimirCola()
 print ("como queda la cola2 después de intercambiar:")
 Cola2.imprimirCola()
+
+
+""" Punto 10: por ejemplo podría usarse la cola en un software diseñado para asignar mesas
+por orden de llegada en un restaurant, dentro de las que se van desocupando y no se encuentran reservadas"""
+
+"""
+class Mesas():
+    True es que la mesa está vacía; están vacías por defecto
+    def __init__(self,cantMesas):
+        self.mesas = []
+        for i in range (cantMesas):
+            self.mesas.append(True)
+    def cambiarEstado(self,nMesa,estado):
+        self.mesas[nMesa-1] = estado
+
+LaRueda = Mesas(4)
+print(LaRueda.mesas)
+LaRueda.cambiarEstado(2,False)
+print(LaRueda.mesas)
+    """
