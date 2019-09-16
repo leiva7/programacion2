@@ -82,3 +82,47 @@ def maximoEnLista(lista):
             maximo =lista[i+1]
     return maximo
 print(maximoEnLista([3,6,8,9,11]))
+
+#pto 6
+"""Toma una lista de palabras y un entero n y borra de la lista las palabras que tienen menos de n caractéres
+Pone en una lista aRemover las palabras a eliminar en la medida que va recorriendo la lista original. Cuando termina de 
+recorrerla las elimina (Esto porque si directamente eliminaba dentro del recorrido me quedaba index out of range porque 
+trataba de recorrer el tamaño original de la lista, que se había ido achicando con cada eliminación)"""
+def filtrarPalabrasn(lista, n):
+    aRemover = []
+    for i in range (len(lista)):
+        if len(lista[i]) < n:
+            aRemover.append(lista[i])
+    for i in aRemover:    
+        lista.remove(i)
+filtrarPalabrasn(["Juan","Lautaro","Joe","Ryan","Marcos"],5)
+
+#pto 7
+"""Sería mejor recibir directamente listas, pero las convertí para respetar el texto de la consigna"""
+def productoEscalar(vector1,vector2):
+    lista1 = []
+    lista2 = []
+    devolver = []
+    sumaDevolver = 0
+    for i in vector1:
+        lista1.append(i)
+    for i in vector2:
+        lista2.append(i)
+    for i in range (len(lista1)):
+        devolver.append(lista1[i]*lista2[i])
+    for i in devolver:
+        sumaDevolver = sumaDevolver + i
+    return sumaDevolver
+
+print(productoEscalar((1,2,3),(-1,0,2)))
+
+#pto 8
+def elimina_duplicados(lista):
+    devolver = lista
+    for e in devolver:
+        for i in range(devolver.count(e)-1):
+            devolver.remove(e)
+    return devolver
+print(elimina_duplicados(["tun","perro","langostino","gato","tun","tun","perro"]))
+
+
