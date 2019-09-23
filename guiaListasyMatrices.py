@@ -125,4 +125,83 @@ def elimina_duplicados(lista):
     return devolver
 print(elimina_duplicados(["tun","perro","langostino","gato","tun","tun","perro"]))
 
+#Ejercicios matrices
+
+#Pto 1
+def crearMatriz(filas,columnas):
+    nombre = []
+    for i in range(filas):
+        nombre.append([])
+        for j in range(columnas):
+            nombre[i].append(0)
+    return nombre
+    
+a = crearMatriz(2,3)
+print(a)
+
+#Pto 2
+def devolverFilas(matriz):
+    filas = 0
+    for i in range (len(matriz)):
+        filas += 1
+    return filas
+    
+def devolverColumnas(matriz):
+    columnas = 0
+    for c in range (len(matriz[0])):
+        columnas +=1
+    return columnas
+        
+
+print(devolverFilas(a)) 
+print(devolverColumnas(a))
+
+#Pto 3
+def enumF(matriz):
+    contador = 1
+    for i in range (devolverFilas(matriz)):
+        for j in range (devolverColumnas(matriz)):
+            matriz[i][j]=contador
+            contador +=1
+    return matriz  
+    
+print(enumF(a))
+
+def enumC(matriz):
+    contador = 1
+    for c in range (devolverColumnas(matriz)):
+        for f in range (devolverFilas(matriz)):
+            matriz[f][c]=contador
+            contador +=1
+    return matriz  
+    
+print(enumC(a))
+
+#Pto 4
+def cantPares(matriz):
+    contador = 0
+    for f in range (devolverFilas(matriz)):
+        for c in range (devolverColumnas(matriz)):
+            if matriz[f][c]%2==0:
+                contador += 1
+    return contador
+    
+print(cantPares(a))
+
+#Pto 5
+def sumarMatrices(mA,mB):
+    if (devolverFilas(mA)==devolverFilas(mB)) & (devolverColumnas(mA)==devolverColumnas(mB)):
+        nueva = crearMatriz(devolverFilas(mA),devolverColumnas(mA))
+        for f in range (devolverFilas(mA)):
+            for c in range (devolverColumnas(mB)):
+                nueva[f][c]=mA[f][c]+mB[f][c]
+        return nueva
+    else:
+        return False
+
+b=crearMatriz(4,4)
+print(sumarMatrices(a,b))
+c=crearMatriz(2,3)
+enumF(c)
+print(sumarMatrices(a,c))
 
