@@ -200,8 +200,53 @@ def sumarMatrices(mA,mB):
         return False
 
 b=crearMatriz(4,4)
-print(sumarMatrices(a,b))
+print(a)
+print(b)
+print(sumarMatrices(a,b), "da falso porque las matrices son de distinto tamaño")
 c=crearMatriz(2,3)
 enumF(c)
+print(a)
+print(c)
 print(sumarMatrices(a,c))
 
+#Pto 6
+#Dado que la matriz es cuadrada la cant de filas y columnas son las mismas; como estoy buscando la diagonal (o sea los i 1,1 2,2 3,3 etc) recorro con un solo índice
+def diagonal (matrizCuadrada):
+    diagonal = []
+    for f in range (devolverFilas(matrizCuadrada)):
+        diagonal.append(matrizCuadrada[f][f])
+    return diagonal
+enumF(b)
+print(b)
+print(diagonal(b))
+
+def sumaDiagonal(matrizCuadrada):
+    suma = 0
+    for f in range (devolverFilas(matrizCuadrada)):
+        suma += (matrizCuadrada[f][f])
+    return suma
+print("suma diagonal: ")
+print(sumaDiagonal(b))
+
+#Pto 7
+d = enumF(crearMatriz(5,6))
+print("Matriz en la que se buscarán números primos: ")
+print (d)
+
+#Devuelve el mismo numero si es primo, y false si no lo es
+def es_primo(num):
+    for i in range (2,num):
+        if num%i ==0:
+            return False
+    return num
+    
+#Para cada posición de la matriz, comparo si lo retornado por es_primo es el mismo número. Si es, agrego la posición como tupla a una lista. 
+def posiciones_primos(matriz):
+    pos = []
+    for f in range (devolverFilas(matriz)):
+        for c in range (devolverColumnas(matriz)):
+            if es_primo(matriz[f][c])==(matriz[f][c]):
+                pos.append((f,c))
+    return pos
+print("Tuplas con las posiciones de los números prímos de la matriz anterior: ")
+print(posiciones_primos(d))
