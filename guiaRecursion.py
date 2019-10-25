@@ -83,7 +83,16 @@ reverse [5,2,6,8,3]
 = (((((reverse[])++3)++8)++6)++2)++5
 = (((([]++3)++8)++6)++2)++5
 =[3,8,6,2,5]
+"""
 
+def reverse (lista,r=[]):
+    if lista == []:
+        return []
+    else:      
+        return reverse(lista[1:])+[lista[0]]
+print("reverse de [5,2,6,8,3] es:",reverse([5,2,6,8,3]))  
+
+"""
 Recursión sobre varios argumentos: La función sumal
 Emparejamiento de elementos (la función sumarl):
 sumarl :: [a] -> [a] -> [a]
@@ -98,8 +107,20 @@ sumarl [5,2,6,8] [10,3,4,2]
 =[5+10] ++ [2+3] ++ [6+4] ++ [8+2] ++ sumarl [] []
 =[5+10] ++ [2+3] ++ [6+4] ++ [8+2] ++ []
 =[15,5,10,10]
+"""
+def sumarl(listaA,listaB,res=[]):
+    if len(listaA)==len(listaB):
+        if listaA==[] or listaB==[]:    
+            return res
+        else:
+            res.append(listaA[0]+listaB[0])
+            return sumarl(listaA[1:],listaB[1:],res)
+    else:
+        return "las cadenas no tienen el mismo largo"
+        
+print(sumarl([5,2,6,8],[10,3,4,2]))
 
-
+"""
 4 Recursión múltiple
 Fibonacci
 fibonacci :: Int -> Int
@@ -112,8 +133,16 @@ fibonacci 5
 = (fibonacci(1) + fibonacci(2))               +                 (fibonacci(2) + fibonacci(3))
 =       1     + (fibonacci(0) + fibonacci(1)) + (fibonacci(0) + fibonacci(1)) + (fibonacci(1) + fibonacci(2))
 =5
+"""
+
+def fibonacci (n):
+    if n==0 or n==1:
+        return n
+    return fibonacci(n-2) + fibonacci(n-1)
+print("Fibonacci de 5 es: ", fibonacci(5)) 
 
 
+"""
 Subir la escalera
 
 formas n::  Int->Int
@@ -127,8 +156,17 @@ formas 5
 =((formas(2)+formas(1))+2) + (2 +1)
 =2+1+2+2+1
 =8
+"""
+def formas(n):
+    if n==1 or n==2:
+        return n
+    return formas(n-1) + formas(n-2)
+    
+print("Formas de 5 es: ", formas (5))
 
 
+
+"""
 5 Recursión mutua
 Par e impar por recursión mutua:
 par :: Int -> Bool
@@ -150,4 +188,16 @@ par (7)
 = False
 
 """
+def impar(n):
+    if n == 0:
+        return False
+    else:
+        return par(n-1)
+        
+def par (n):
+    if n==0:
+        return True
+    else:
+        return impar(n-1)
 
+print("par de 7 da: ",par(7))
